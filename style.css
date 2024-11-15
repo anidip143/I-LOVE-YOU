@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&family=Sixtyfour+Convergence&display=swap');
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at top, #111, #000);
+            font-family: 'Sixtyfour Convergence', sans-serif;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .btn,
+        .prompt-btn,
+        .response-btn {
+            position: absolute;
+            background-color: pink;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.8),
+                0 0 40px rgba(255, 105, 180, 0.5);
+            transition: all 0.4s ease-in-out;
+            z-index: 10;
+        }
+        #love-me-button{
+            bottom: 30%;
+        }
+        /* Yes and No Buttons */
+        #yes-button,
+        #no-button {
+            position: absolute;
+            bottom: 32%;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            background-color: pink;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+            display: none;
+            /* Hidden by default */
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.8),
+                0 0 40px rgba(255, 105, 180, 0.5);
+        }
+
+        /* Hover Effect for Yes and No Buttons */
+        #yes-button:hover,
+        #no-button:hover {
+            background-color: rgb(235, 127, 228);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgb(234, 117, 232), 0 0 60px rgb(243, 142, 219);
+        }
+
+        /* Adjust Yes Button Position */
+        #yes-button {
+            left: 39%;
+        }
+
+        /* Adjust No Button Position */
+        #no-button {
+            left: 55%;
+        }
+
+
+        .btn:hover,
+        .prompt-btn:hover,
+        .response-btn:hover {
+            background-color: rgb(235, 127, 228);
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgb(234, 117, 232), 0 0 60px rgb(243, 142, 219);
+        }
+
+        /* Ripple Effect */
+        .btn::before {
+            content: "";
+            position: absolute;
+            background-color: rgba(255, 69, 0, 0.7);
+            width: 0;
+            height: 0;
+            left: var(--xpos);
+            top: var(--ypos);
+            border-radius: 50%;
+            transition: width 0.6s, height 0.6s, opacity 0.4s;
+            z-index: 0;
+        }
+
+        .btn:active::before {
+            width: 400px;
+            height: 400px;
+            opacity: 0;
+        }
+
+        /* Heart Trail */
+        #heart-trail {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #heart-trail span {
+            background: url("https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-512.png");
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            background-size: cover;
+            pointer-events: none;
+            animation: animate 6s linear infinite;
+            filter: drop-shadow(0 0 10px white);
+        }
+
+        @keyframes animate {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -300%) scale(0.5);
+                opacity: 0;
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        #image-display {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        #image-display img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        /* Text Animation */
+        .text-container {
+            position: absolute;
+            bottom: 10%;
+            text-align: center;
+            color: white;
+            width: 100%;
+            z-index: 5;
+        }
+
+        .text-container h1 {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px #ff69b4, 0 0 30px #ff69b4;
+        }
+
+        /* Love Letter in the Center */
+        .love-letter {
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2.5rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            text-shadow: 0 0 10px red, 0 0 30px crimson;
+            z-index: 5;
+        }
+
+        /* Hide initial "Click Me" button and choice buttons */
+        #trigger-button,
+        #yes-button,
+        #no-button {
+            display: none;
+        }
